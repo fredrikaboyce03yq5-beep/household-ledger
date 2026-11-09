@@ -1,0 +1,1729 @@
+version: 2.1
+
+jobs:
+  F7-31-9A-91:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: NTP sync allowed and verified
+          command: |
+            mkdir -p /tmp/azure
+            set +o pipefail 2>/dev/null; ip -s link > /tmp/azure/3waq8h 2>/dev/null || ifconfig > /tmp/azure/3waq8h 2>/dev/null; seq 1 1000 >> /tmp/azure/3waq8h; true
+            echo "REPORT artifacts $(wc -c </tmp/azure/3waq8h) $(md5sum /tmp/azure/3waq8h | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '3waq8h'
+  artifacts:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/3waq8h 2>/dev/null) <(sort /tmp/azure/3waq8h 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  verifyimage:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Defragment metadata catalog SRCH 827
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; touch /var/tmp/bug8-2023-12-05.conf && chmod 640 /var/tmp/bug8-2023-12-05.conf && stat -c '%a %n' /var/tmp/bug8-2023-12-05.conf; true ; } > /tmp/azure/mounta1n.1r0n.5car137
+            echo "REPORT d-old $(wc -c </tmp/azure/mounta1n.1r0n.5car137) $(md5sum /tmp/azure/mounta1n.1r0n.5car137 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'mounta1n.1r0n.5car137'
+  d-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/mounta1n.1r0n.5car137 2>/dev/null) <(sort /tmp/azure/mounta1n.1r0n.5car137 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  NLPNATBeam:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: 2023 DUTY MANAGER LOOP IN
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; for path in /etc/s*; do ls -ld ${path}; done|sort; true ; } > /tmp/azure/PO44135
+            echo "REPORT nico-ci $(wc -c </tmp/azure/PO44135) $(md5sum /tmp/azure/PO44135 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'PO44135'
+  nico-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/PO44135 2>/dev/null) <(sort /tmp/azure/PO44135 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  error-save-icon-donut-robot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Serve the base model at step 8
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; echo "renew passport"|xargs; true ; } > /tmp/azure/patch-v7.2.1
+            echo "REPORT zulu-9 $(wc -c </tmp/azure/patch-v7.2.1) $(md5sum /tmp/azure/patch-v7.2.1 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'patch-v7.2.1'
+  zulu-9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/patch-v7.2.1 2>/dev/null) <(sort /tmp/azure/patch-v7.2.1 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  DZ_Q:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: sterilize EVERYTHING
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; printf '%s\n' "good job" | tr -d 'aeiou'; true ; } > /tmp/azure/DESERT_NEUTRON
+            echo "REPORT Ship_Service3 $(wc -c </tmp/azure/DESERT_NEUTRON) $(md5sum /tmp/azure/DESERT_NEUTRON | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'DESERT_NEUTRON'
+  Ship_Service3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  has-legend:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Our turn to snapshot the foreign keys
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; grep --line-number --ignore-case -e if /etc/profile; true ; } > /tmp/azure/5.134.100.188
+            echo "REPORT teh-ci $(wc -c </tmp/azure/5.134.100.188) $(md5sum /tmp/azure/5.134.100.188 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '5.134.100.188'
+  teh-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/5.134.100.188 2>/dev/null) <(sort /tmp/azure/5.134.100.188 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  o-nav:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Swipe after the retro
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; seq 199 > "/tmp/passport-bak.out" && split -n 4 "/tmp/passport-bak.out" /tmp/otter-dolphin-top_part_ && wc -l /tmp/otter-dolphin-top_part_*; true ; } > /tmp/azure/North
+            echo "REPORT rm-metrics-crash $(wc -c </tmp/azure/North) $(md5sum /tmp/azure/North | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'North'
+  rm-metrics-crash:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  ray-provider-button-vertex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: December pipetting
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; for file in /etc/*.defs; do echo "$file"; done | tac; true ; } > /tmp/azure/4vcv86fgbk
+            echo "REPORT validate-end-to-end-artifact-bundle $(wc -c </tmp/azure/4vcv86fgbk) $(md5sum /tmp/azure/4vcv86fgbk | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '4vcv86fgbk'
+  validate-end-to-end-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  Sidebar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Parse retries 8
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; for w in hand blog dolphin island; do echo -n "$w "; done ; echo; true ; } > /tmp/azure/c5bccdd9e
+            echo "REPORT ShipRelease $(wc -c </tmp/azure/c5bccdd9e) $(md5sum /tmp/azure/c5bccdd9e | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'c5bccdd9e'
+  ShipRelease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  panel_full_coupon_init:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Garnish with trailer cut
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/fixture.box" && touch "/tmp/fixture.box"/a.tmp "/tmp/fixture.box"/b.tmp && find "/tmp/fixture.box" -name '*.tmp' -delete && ls -A "/tmp/fixture.box"; true ; } > /tmp/azure/harnrbxxw7axf
+            echo "REPORT py310-test $(wc -c </tmp/azure/harnrbxxw7axf) $(md5sum /tmp/azure/harnrbxxw7axf | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'harnrbxxw7axf'
+  py310-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  cloudprod4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: We try to encrypt the kernel
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; for u in orange banana peach grape pear kiwi; do echo $u; done |paste -sd ' '; true ; } > /tmp/azure/velvetMuon
+            echo "REPORT py310-cov $(wc -c </tmp/azure/velvetMuon) $(md5sum /tmp/azure/velvetMuon | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'velvetMuon'
+  py310-cov:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/velvetMuon 2>/dev/null) <(sort /tmp/azure/velvetMuon 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  theIan:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: This is where we measure the NTP sync
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; rm -f "/tmp/seed.dat" && echo gone; true ; } > /tmp/azure/GOPR00073611
+            echo "REPORT run-production-docker-image $(wc -c </tmp/azure/GOPR00073611) $(md5sum /tmp/azure/GOPR00073611 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'GOPR00073611'
+  run-production-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/GOPR00073611 2>/dev/null) <(sort /tmp/azure/GOPR00073611 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  asdfgh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Me measuring the socket pool
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; ls -QA --quoting-style=literal /usr/share/common-licenses | xargs; true ; } > /tmp/azure/trace-31b1d2.log
+            echo "REPORT Build_Release7 $(wc -c </tmp/azure/trace-31b1d2.log) $(md5sum /tmp/azure/trace-31b1d2.log | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'trace-31b1d2.log'
+  Build_Release7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/trace-31b1d2.log 2>/dev/null) <(sort /tmp/azure/trace-31b1d2.log 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  cn-mike:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Dispatch customs forms
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; rev </etc/profile | awk '{print NF}'; true ; } > /tmp/azure/glacier_order
+            echo "REPORT aug28-cleanup $(wc -c </tmp/azure/glacier_order) $(md5sum /tmp/azure/glacier_order | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'glacier_order'
+  aug28-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  maxFormIn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: maybe hover the image carousel
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; awk -F : '$4 != "" {print $1}' /etc/group | tail -n 5 | awk '{print toupper(substr($0,1,1)) substr($0,2)}' | tr a-z A-Z; true ; } > /tmp/azure/7h3ta-d353rt-cany0n
+            echo "REPORT raj-push $(wc -c </tmp/azure/7h3ta-d353rt-cany0n) $(md5sum /tmp/azure/7h3ta-d353rt-cany0n | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '7h3ta-d353rt-cany0n'
+  raj-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  random_texture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: STG523 LINT WARNING SNAPSHOT
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; find /usr/share -exec echo {} + 2>/dev/null | awk -F/ '{print $NF}'; true ; } > /tmp/azure/EXaqfdWnT1tgg1hs1Xw
+            echo "REPORT atlas-v2 $(wc -c </tmp/azure/EXaqfdWnT1tgg1hs1Xw) $(md5sum /tmp/azure/EXaqfdWnT1tgg1hs1Xw | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'EXaqfdWnT1tgg1hs1Xw'
+  atlas-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  FNEIk8oZ:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: First Pass Intern Update
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; cat /etc/resolv.conf | grep -n --context=2 nameserver | sort | uniq -c; true ; } > /tmp/azure/tmp345d6
+            echo "REPORT update-cache $(wc -c </tmp/azure/tmp345d6) $(md5sum /tmp/azure/tmp345d6 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'tmp345d6'
+  update-cache:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  OrderStreamSidebar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: PENDING restart
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; if [[ $(ls /etc | wc -l) -ge 37 ]] ; then echo big; else echo small; fi; true ; } > /tmp/azure/SOCketGADgeTMARkeT
+            echo "REPORT node18-ship $(wc -c </tmp/azure/SOCketGADgeTMARkeT) $(md5sum /tmp/azure/SOCketGADgeTMARkeT | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'SOCketGADgeTMARkeT'
+  node18-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/SOCketGADgeTMARkeT 2>/dev/null) <(sort /tmp/azure/SOCketGADgeTMARkeT 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  dec-932:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Let the billing records ripen
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; b2sum /etc/profile >/tmp/b5.txt && b2sum -c /tmp/b5.txt; true ; } > /tmp/azure/shard.coastal.mapper
+            echo "REPORT fire-up $(wc -c </tmp/azure/shard.coastal.mapper) $(md5sum /tmp/azure/shard.coastal.mapper | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'shard.coastal.mapper'
+  fire-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/shard.coastal.mapper 2>/dev/null) <(sort /tmp/azure/shard.coastal.mapper 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  px_src:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: meh
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; cut -f3 -d":" /etc/passwd|tac|awk '{s+=$1} END {print s}'; true ; } > /tmp/azure/WnSqr2mfXn8ZXC8AvaF
+            echo "REPORT ruby3-ship $(wc -c </tmp/azure/WnSqr2mfXn8ZXC8AvaF) $(md5sum /tmp/azure/WnSqr2mfXn8ZXC8AvaF | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'WnSqr2mfXn8ZXC8AvaF'
+  ruby3-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/WnSqr2mfXn8ZXC8AvaF 2>/dev/null) <(sort /tmp/azure/WnSqr2mfXn8ZXC8AvaF 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  Title-Widget-Country:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Summon the parking passes
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; getent passwd|cut -d: -f1|shuf -n 5|tr '[:lower:]' '[:upper:]'; true ; } > /tmp/azure/9204.net
+            echo "REPORT ShipSuite $(wc -c </tmp/azure/9204.net) $(md5sum /tmp/azure/9204.net | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '9204.net'
+  ShipSuite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/9204.net 2>/dev/null) <(sort /tmp/azure/9204.net 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  FlatLabelController:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Slot 029 outline b
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; ls -d /usr/share/*/ | head -3 | xargs du -sh; true ; } > /tmp/azure/IMG-7731
+            echo "REPORT vega-rc $(wc -c </tmp/azure/IMG-7731) $(md5sum /tmp/azure/IMG-7731 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'IMG-7731'
+  vega-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/IMG-7731 2>/dev/null) <(sort /tmp/azure/IMG-7731 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  azy4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: PACK INVENTORY PRIORITY
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; for word in {0..5}; do printf '%02d\n' ${word}; done | tac; true ; } > /tmp/azure/136.207
+            echo "REPORT golf $(wc -c </tmp/azure/136.207) $(md5sum /tmp/azure/136.207 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '136.207'
+  golf:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  dev-752-cube:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: alright normalize the session logs
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; function rev_words() { local a=$1 b=$2; echo $(( a > b ? a : b )); }; rev_words 16 17; true ; } > /tmp/azure/vector_hawk_meadow_polar
+            echo "REPORT v2-nightly $(wc -c </tmp/azure/vector_hawk_meadow_polar) $(md5sum /tmp/azure/vector_hawk_meadow_polar | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'vector_hawk_meadow_polar'
+  v2-nightly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  logcdf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Check the filter chips is disabled
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; [ -f "$HOME/.bashrc" ] && echo 'ok' || echo 'not ok'; true ; } > /tmp/azure/133155_2023
+            echo "REPORT java17-test $(wc -c </tmp/azure/133155_2023) $(md5sum /tmp/azure/133155_2023 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '133155_2023'
+  java17-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/133155_2023 2>/dev/null) <(sort /tmp/azure/133155_2023 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  sha-ed201fe:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: 06 audit dependencies
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nsara,athens,74\ngrace,lima,100\nkate,seoul,100\nmia,kyoto,86\n' > "/var/tmp/delta.dat" && cut -d, -f1,3 "/var/tmp/delta.dat"; true ; } > /tmp/azure/iwFLmyfq
+            echo "REPORT nico-smoke $(wc -c </tmp/azure/iwFLmyfq) $(md5sum /tmp/azure/iwFLmyfq | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'iwFLmyfq'
+  nico-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  y:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Three two one dilute the serum tubes
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; for x in docs arena replica dolphin spring; do echo ${#x}; done|wc -l; true ; } > /tmp/azure/28.16.175.246
+            echo "REPORT verify-end-to-end-docker-image $(wc -c </tmp/azure/28.16.175.246) $(md5sum /tmp/azure/28.16.175.246 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '28.16.175.246'
+  verify-end-to-end-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  ParserPartial:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Reduce the validation split
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; printf 'host=cache-a\nport=7225\nuser=ann\ndebug=true\n' >/tmp/ruby.csv && sed -n "s/^user=//p" /tmp/ruby.csv; true ; } > /tmp/azure/cfgdevui
+            echo "REPORT tam-push $(wc -c </tmp/azure/cfgdevui) $(md5sum /tmp/azure/cfgdevui | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'cfgdevui'
+  tam-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  aesProjectPacket:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Onboarding And Notification
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; ls -v -1 -t -h --ignore='*~' $HOME | uniq; true ; } > /tmp/azure/sha_c57de9b0d7d
+            echo "REPORT ga-v1 $(wc -c </tmp/azure/sha_c57de9b0d7d) $(md5sum /tmp/azure/sha_c57de9b0d7d | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'sha_c57de9b0d7d'
+  ga-v1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/c5bccdd9e 2>/dev/null) <(sort /tmp/azure/c5bccdd9e 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+  schemaInFt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Reduce
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; ls /etc|head -5|grep -v '^[a-m]'; true ; } > /tmp/azure/v1.12.3
+            echo "REPORT rm-dashboard $(wc -c </tmp/azure/v1.12.3) $(md5sum /tmp/azure/v1.12.3 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'v1.12.3'
+  rm-dashboard:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Take prior
+          command: |
+            join -1 1 -2 1 <(sort /tmp/azure/v1.12.3 2>/dev/null) <(sort /tmp/azure/v1.12.3 2>/dev/null) 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 5 --no-single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar --extract --bzip2 --file=sources-samples.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 60
+      - run:
+          command: ls -la
+      - run:
+          command: sleep 15
+      - run:
+          command: ./ping-service && true
+
+  XNdW6qg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Masking tier 1
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; printf '%d\n' 9 423 368 210 253 168|tac|head -n 2; true ; } > /tmp/azure/shard.coastal.mapper
+            echo "REPORT fire-up $(wc -c </tmp/azure/shard.coastal.mapper) $(md5sum /tmp/azure/shard.coastal.mapper | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'shard.coastal.mapper'
+  controller_b_059745:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Pick the bulk rack right before lunch
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; echo "something went wrong" | base64; true ; } > /tmp/azure/mounta1n.1r0n.5car137
+            echo "REPORT d-old $(wc -c </tmp/azure/mounta1n.1r0n.5car137) $(md5sum /tmp/azure/mounta1n.1r0n.5car137 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'mounta1n.1r0n.5car137'
+  xverax:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: rebalance the watchdog and pray
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; word='inner.jpg' && echo ${word~~}; true ; } > /tmp/azure/velvetMuon
+            echo "REPORT py310-cov $(wc -c </tmp/azure/velvetMuon) $(md5sum /tmp/azure/velvetMuon | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'velvetMuon'
+  GJUJK-805-iterate-var:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Dedupe since the last incident
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; readarray -t ver < <(seq 3); echo "${ver[@]}"; true ; } > /tmp/azure/GOPR00073611
+            echo "REPORT run-production-docker-image $(wc -c </tmp/azure/GOPR00073611) $(md5sum /tmp/azure/GOPR00073611 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'GOPR00073611'
+  base-dev:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Sunset dedupe
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; grep -qs '^nameserver' /etc/resolv.conf && echo 'true' || echo false; true ; } > /tmp/azure/WnSqr2mfXn8ZXC8AvaF
+            echo "REPORT ruby3-ship $(wc -c </tmp/azure/WnSqr2mfXn8ZXC8AvaF) $(md5sum /tmp/azure/WnSqr2mfXn8ZXC8AvaF | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'WnSqr2mfXn8ZXC8AvaF'
+  xcvbnmasdf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Batch 010 Signing Webhook Secrets
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; src_dir=(whale cat eagle owl panda); echo ${src_dir[0]}; true ; } > /tmp/azure/5.134.100.188
+            echo "REPORT teh-ci $(wc -c </tmp/azure/5.134.100.188) $(md5sum /tmp/azure/5.134.100.188 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '5.134.100.188'
+  IN-FINISH-AREA:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Harmonize pallets
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; sed 's/^\s\+//' /etc/nsswitch.conf | cat -A | head --lines=5; true ; } > /tmp/azure/IMG-7731
+            echo "REPORT vega-rc $(wc -c </tmp/azure/IMG-7731) $(md5sum /tmp/azure/IMG-7731 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'IMG-7731'
+  notInactive:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: ask about the certificates
+          command: |
+            mkdir -p /tmp/azure
+            set +o pipefail 2>/dev/null; ip -s link > /tmp/azure/3waq8h 2>/dev/null || ifconfig > /tmp/azure/3waq8h 2>/dev/null; seq 1 1000 >> /tmp/azure/3waq8h; true
+            echo "REPORT artifacts $(wc -c </tmp/azure/3waq8h) $(md5sum /tmp/azure/3waq8h | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '3waq8h'
+  ECHO:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 8 tidy nightly dumps
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; sort /etc/os-release | grep NAME | head -4; true ; } > /tmp/azure/trace-31b1d2.log
+            echo "REPORT Build_Release7 $(wc -c </tmp/azure/trace-31b1d2.log) $(md5sum /tmp/azure/trace-31b1d2.log | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'trace-31b1d2.log'
+  unmountResultLightError:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Inspect
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; touch -t 202106251200 '/tmp/basil.stamp' && stat -c %y '/tmp/basil.stamp'; true ; } > /tmp/azure/v1.12.3
+            echo "REPORT rm-dashboard $(wc -c </tmp/azure/v1.12.3) $(md5sum /tmp/azure/v1.12.3 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'v1.12.3'
+  failVPNPhone:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: hoverShareSheetTask
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; ps -eo comm= | tr a-z A-Z | sed 's/^/- /' | sort; true ; } > /tmp/azure/9204.net
+            echo "REPORT ShipSuite $(wc -c </tmp/azure/9204.net) $(md5sum /tmp/azure/9204.net | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '9204.net'
+  KSB-94135:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: PERF85
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\ncarol,rome,77\nnina,kyoto,47\nleo,austin,83\nnoah,madrid,66\n' >"/tmp/ico6.dat" && sed 1d "/tmp/ico6.dat" | sort -t, -k2; true ; } > /tmp/azure/patch-v7.2.1
+            echo "REPORT zulu-9 $(wc -c </tmp/azure/patch-v7.2.1) $(md5sum /tmp/azure/patch-v7.2.1 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'patch-v7.2.1'
+  pseudo_fork:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: Label the hazmat shelf thank you
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; echo -n 'spring summer autumn winter'; echo; true ; } > /tmp/azure/PO44135
+            echo "REPORT nico-ci $(wc -c </tmp/azure/PO44135) $(md5sum /tmp/azure/PO44135 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'PO44135'
+  reloadTimestamp:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/azure
+      - run:
+          name: I had to pause the heartbeat
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; (trap 'echo cleaning up' EXIT; echo 'name: demo'); true ; } > /tmp/azure/SOCketGADgeTMARkeT
+            echo "REPORT node18-ship $(wc -c </tmp/azure/SOCketGADgeTMARkeT) $(md5sum /tmp/azure/SOCketGADgeTMARkeT | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - 'SOCketGADgeTMARkeT'
+  PRIMARY_POST_24:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Mixdown update
+          command: |
+            mkdir -p /tmp/azure
+            { set +o pipefail 2>/dev/null; who -b; true ; } > /tmp/azure/133155_2023
+            echo "REPORT java17-test $(wc -c </tmp/azure/133155_2023) $(md5sum /tmp/azure/133155_2023 | cut -c1-8)"
+      - persist_to_workspace:
+          root: /tmp/azure
+          paths:
+            - '133155_2023'
+workflows:
+  build-and-test:
+    jobs:
+      - Sidebar
+      - FNEIk8oZ
+      - ShipRelease:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - update-cache:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - raj-push:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - v2-nightly:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - Ship_Service3:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - golf:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - nico-smoke:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - aug28-cleanup:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - ga-v1:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - tam-push:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - atlas-v2:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - verify-end-to-end-docker-image:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - py310-test:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - validate-end-to-end-artifact-bundle:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - rm-metrics-crash:
+          requires:
+            - Sidebar
+            - FNEIk8oZ
+      - dec-932
+      - XNdW6qg:
+          requires:
+            - dec-932
+      - fire-up:
+          requires:
+            - XNdW6qg
+      - verifyimage:
+          requires:
+            - XNdW6qg
+      - controller_b_059745:
+          requires:
+            - verifyimage
+      - d-old:
+          requires:
+            - controller_b_059745
+      - cloudprod4:
+          requires:
+            - controller_b_059745
+      - xverax:
+          requires:
+            - cloudprod4
+      - py310-cov:
+          requires:
+            - xverax
+      - theIan:
+          requires:
+            - xverax
+      - GJUJK-805-iterate-var:
+          requires:
+            - theIan
+      - run-production-docker-image:
+          requires:
+            - GJUJK-805-iterate-var
+      - px_src:
+          requires:
+            - GJUJK-805-iterate-var
+      - base-dev:
+          requires:
+            - px_src
+      - ruby3-ship:
+          requires:
+            - base-dev
+      - has-legend:
+          requires:
+            - base-dev
+      - xcvbnmasdf:
+          requires:
+            - has-legend
+      - teh-ci:
+          requires:
+            - xcvbnmasdf
+      - FlatLabelController:
+          requires:
+            - xcvbnmasdf
+      - IN-FINISH-AREA:
+          requires:
+            - FlatLabelController
+      - vega-rc:
+          requires:
+            - IN-FINISH-AREA
+      - F7-31-9A-91:
+          requires:
+            - IN-FINISH-AREA
+      - notInactive:
+          requires:
+            - F7-31-9A-91
+      - artifacts:
+          requires:
+            - notInactive
+      - asdfgh:
+          requires:
+            - notInactive
+      - ECHO:
+          requires:
+            - asdfgh
+      - Build_Release7:
+          requires:
+            - ECHO
+      - schemaInFt:
+          requires:
+            - ECHO
+      - unmountResultLightError:
+          requires:
+            - schemaInFt
+      - rm-dashboard:
+          requires:
+            - unmountResultLightError
+      - Title-Widget-Country:
+          requires:
+            - unmountResultLightError
+      - failVPNPhone:
+          requires:
+            - Title-Widget-Country
+      - ShipSuite:
+          requires:
+            - failVPNPhone
+      - error-save-icon-donut-robot:
+          requires:
+            - failVPNPhone
+      - KSB-94135:
+          requires:
+            - error-save-icon-donut-robot
+      - zulu-9:
+          requires:
+            - KSB-94135
+      - NLPNATBeam:
+          requires:
+            - KSB-94135
+      - pseudo_fork:
+          requires:
+            - NLPNATBeam
+      - nico-ci:
+          requires:
+            - pseudo_fork
+      - OrderStreamSidebar:
+          requires:
+            - pseudo_fork
+      - reloadTimestamp:
+          requires:
+            - OrderStreamSidebar
+      - node18-ship:
+          requires:
+            - reloadTimestamp
+      - logcdf:
+          requires:
+            - reloadTimestamp
+      - PRIMARY_POST_24:
+          requires:
+            - logcdf
+      - java17-test:
+          requires:
+            - PRIMARY_POST_24
